@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<style>
+    /* home */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+nav {
+    position:fixed;
+    width: 100%;
+    height: 10%;
+    background: #9a38eb;
+    color: rgb(10, 208, 238);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 1000;
+    font-weight:1000;
+}
+nav h2{
+    font-size: 28px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #d4f402;
+}
+
+.login {
+    border: 2px solid rgb(220, 37, 67);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.hero {
+    height: 150vh;
+    background: url(https://i.pinimg.com/736x/1e/a7/7c/1ea77c3d17332baa7cc206c3c7bf4387.jpg) center/cover;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    color: rgb(239, 46, 7);
+}
+
+.hero-content p {
+    font-size: 30px;
+    color: #d7f208;
+}
+
+section {
+    padding: 80px 50px;
+    text-align: center;
+}
+ /* about us */
+.about {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #555;
+    line-height: 1.6;
+}
+ /* new events */
+.hero_2 {
+    position: relative;
+    height: 100vh;
+    /* padding: 15px 50px; */
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(40%);
+}
+
+.hero_2 {
+    color: rgb(232, 225, 225);
+    text-shadow: 2px 2px 8px black;
+    z-index: 1;
+    text-align: center;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-box input {
+    outline: none;
+    width: 250px;
+    border: 2px solid black;
+    padding: 12px;
+    border-radius: 25px 0 0 25px;
+}
+
+.search-box button {
+    padding: 12px 20px;
+    border: 2px solid black;
+    background: #ff4081;
+    color: white;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+}
+
+h2 {
+    margin: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h3 {
+    padding-top: 1rem;
+    text-align: left;
+    margin-top: 20px;
+    text-shadow: 2px 2px 8px black;
+    color: #ff4081;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h4 {
+    text-align: center;
+    text-shadow: 2px 2px 8px black;
+    padding-top: 3rem;
+}
+
+a {
+    color: tomato;
+    padding-top: 5.5rem;
+    text-align: center;
+}
+
+.events-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.newevents {
+    color: #ff4081;
+    padding-top: 4rem;
+    text-shadow: #ff4081;
+    text-align: left;
+}
+
+.image1 {
+    position: relative;
+    /* background: #fff; */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.image1 img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #ff4081;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+.image1:hover img{
+    transform: scale(1.1);
+}
+
+.image2 img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #ff4081;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+.image2:hover img {
+    transform: scale(1.1);
+}
+
+.image3 img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #ff4081;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+.image3:hover img {
+    transform: scale(1.1);
+}
+
+.image4 img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #ff4081;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+.image4:hover img{
+    transform: scale(1.1);
+}
+
+.event-info {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    color: white;
+}
+
+h3 {
+    color: #ff4081;
+    text-align: left;
+    padding-bottom: 70px;
+}
+
+span {
+    color: #ff4081;
+    font-size: larger;
+}
+
+.events-container h4 {
+    color: white;
+    padding-bottom: 10px;
+}
+
+.events-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+}
+ /* categories */
+.categories {
+    padding: 40px 60px;
+    background: #f5f5f5;
+}
+
+.categories h1 {
+    color: black;
+    text-shadow: #555;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.category-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    width: 180px;
+    height: 150px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgb(16, 16, 16);
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.category-card i {
+    font-size: 40px;
+    color: #ff4081;
+    margin-bottom: 10px;
+}
+
+.category-card p {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    text-shadow: #ff4081;
+    margin-bottom: 40px;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0.5, 0, 0.6);
+}
+
+    /* gallery */
+.gallery-section {
+    padding: 80px 40px;
+    text-align: center;
+    background-image: url("https://i.pinimg.com/736x/22/15/e4/2215e48edef9a276b02a8f51ebfbd5a7.jpg");
+}
+
+.gallery-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+
+
+.gallery {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+.gallery-item {
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: black;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.overlay h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #f4f4f4;
+}
+
+.gallery-section h3 {
+    color: #ff4081;
+    text-align: left;
+    padding: 10px;
+}
+
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+ /* customer reviews */
+   body {
+      background: #f5f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .reviews-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      color: #1d3557;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: #666;
+      font-size: 16px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .rating-summary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .rating-box h3 {
+      font-size: 42px;
+      color: #e63946;
+    }
+
+    .stars {
+      color: #ffb703;
+      font-size: 22px;
+      margin: 8px 0;
+    }
+
+    .rating-box p,
+    .summary-text p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    .reviews-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #457b9d, #1d3557);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .review-info h4 {
+      font-size: 18px;
+      color: #1d3557;
+    }
+
+    .review-info span {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .review-card .stars {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      color: #444;
+      font-size: 15px;
+    }
+
+    .review-form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .review-form-box h3 {
+      text-align: center;
+      color: #1d3557;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .review-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .review-form input,
+    .review-form select,
+    .review-form textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #dcdcdc;
+      border-radius: 10px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .review-form textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .review-form input:focus,
+    .review-form select:focus,
+    .review-form textarea:focus {
+      border-color: #457b9d;
+    }
+
+    .review-form button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .review-form button:hover {
+      background: #c92635;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 15px;
+      color: green;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .section-header h2 {
+        font-size: 28px;
+      }
+
+      .rating-box h3 {
+        font-size: 34px;
+      }
+      /* company details */
+    }
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .company-section {
+            padding: 50px 20px;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .company-image {
+            flex: 1;
+        }
+
+        .company-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .company-details {
+            flex: 1;
+        }
+
+        .company-details h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .company-details p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        /* contact us */
+    body {
+    background: #f2f2f2;
+    }
+    .contact {
+    text-align: center;
+    padding: 80px 20px;
+    }
+
+    .contact h2 {
+    margin-bottom: 25px;
+    font-size: 25px;
+    }
+
+    .contact-form {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 15px;
+    }
+
+    .contact-form textarea {
+    height: 120px;
+    resize: none;
+    }
+
+
+    .contact-form button {
+    padding: 12px;
+    background: brown;
+    border: none;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    }
+
+    .contact-form button:hover {
+    background: purple;
+    background-color: blue;
+    }        
+    footer{
+        background: #fa0404;
+        color: #d4f402;
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <!-- nav bar -->
+    <nav>
+        <h2>Thopstech Event Planner</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#newevents">New Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#customer reviews">Customer Reviews</a></li>
+            <li><a href="#company details">Company Details</a></li>
+            <li><a href="#contact us">Contact Us</a></li>
+            <li><i class="fa fa-user login"></i></li>
+        </ul>
+    </nav>
+    <section id="home" class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Event Planner</h1>
+            <p>To get the best of your Event you just need to let us know,And we do the rest...</p>
+        </div>
+    </section>
+     <!-- About us -->
+    <section>
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p>
+                welcome to Thopstech Event planner.We are a team of passionate event planners dedicated to creating memorable experiences. We specialize in weddings, corporate events,celebrations and more with creativity and professionalism.
+            </p>
+        </section>
+    </section>
+    <!-- new events -->
+    <section id="newevents" class="hero_2">
+        <video autoplay muted loop playsinline class="bg-video">
+        <source src="https://cdn.pixabay.com/video/2023/09/25/182287-868067162_large.mp4"></video>
+        <h1>Plan Your Perfect Event</h1>
+        <p>We organize unforgettable events with creativity & passion</p>
+        <div class="search-box">
+            <input type="text" placeholder="Search events...">
+            <button>Search</button>
+        </div>
+
+        <h3 class="newevents"></h3>
+        <div class="events-container">
+            <div class="image1">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                <div class="event-info">
+                    <h2>DJ</h2>
+                    <h4>Sat , Sun <span>| from $500 </span></h4>
+                </div>
+            </div>
+            <div class="image2">
+                <img src="https://media.istockphoto.com/id/1364827675/photo/huge-multi-sports-collage-taekwondo-tennis-soccer-basketball-etc.webp?a=1&b=1&s=612x612&w=0&k=20&c=4nz6nUiZkkUF923d0b2mDkzWRhdSu8hHOXuCVZafrNw=" alt="">
+                <div class="event-info">
+                    <h2>Sports</h2>
+                    <h4> Friday <span>| from $100 </span></h4>
+                </div>
+            </div>
+            <div class="image3">
+                <img src="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                <div class="event-info">
+                    <h2>Travels</h2>
+                    <h4>Fri-sat <span>| from $500 </span></h4>
+                </div>
+            </div>
+            <div class="image4">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                <div class="event-info">
+                    <h2>Mountains</h2>
+                    <h4>Mon-Fri <span> | from $1000 </span></h4>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="moreContent" class="hidden">
+        </div>
+    </section>
+    <section class="categories">
+        <h1>Explore by <span>categories</span></h1>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <i class="fa-solid fa-music"></i>
+                <p>Music</p>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-running"></i>
+                <p>Sport</p>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-brands fa-avianex"></i>
+                <p>Travels</p>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-palette"></i>
+                <p>Exhibition</p>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-briefcase"></i>
+                <p>Business</p>
+            </div>
+
+            <div class="category-card">
+                <i class="fa-solid fa-camera"></i>
+                <p>Photography</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- Gallery -->
+    <section id="gallery" class="gallery-section">
+        <h3>Gallery</h3>
+
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/04/c4/20/04c420a02a1e4e638dbaeffd5e4548dd.jpg">
+                <div class="overlay">
+                    <h3>DJ</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/1200x/94/ac/fd/94acfd51b2d25967e34c8ba4fe098fca.jpg">
+                <div class="overlay">
+                    <h3>CORPORATE</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/1e/a7/7c/1ea77c3d17332baa7cc206c3c7bf4387.jpg">
+                <div class="overlay">
+                    <h3>WEDDING</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/7b/2d/44/7b2d445a14ebbbf1ec9a23c8aab97fc6.jpg">
+                <div class="overlay">
+                    <h3>ENTERTAINMENT</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/56/16/de/5616de9501185d5ffde0577288fc1ce7.jpg" alt="">
+                <div class="overlay">
+                    <h3>EDUCATIONAL</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/736x/c4/dc/29/c4dc29305b1b4da5a4176950730b9719.jpg" alt="">
+                <div class="overlay">
+                    <h3>SPORTS</h3>
+                </div>
+            </div>
+    </section>
+    <!-- customer review -->
+    <section id="customer reviews" class="reviews-section">
+            <div class="section-header">
+                <h2>Customer Reviews</h2>
+                <p>
+                    See what our happy clients say about our event management services.
+                    We create memorable weddings, birthdays, corporate events, and special celebrations with perfection.
+                </p>
+            </div>
+
+            <div class="rating-summary">
+                <div class="rating-box">
+                        <h3>4.9/5</h3>
+                        <div class="stars">★★★★★</div>
+                        <p>Based on 120+ client reviews</p>
+                </div>
+                <div class="summary-text">
+                    <p><strong>Trusted by customers</strong> for professional planning, elegant decoration, and smooth event execution.</p>
+                </div>
+            </div>
+
+            <div class="reviews-container" id="reviewsContainer">
+                    <div class="review-card">
+                        <div class="review-top">
+                            <div class="avatar">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Anjali">
+                                <div class="avatar-fallback">A</div>
+                            </div>
+                            <div class="review-info">
+                                <h4>Anjali</h4>
+                                <span>Wedding Event</span>
+                            </div>
+                        </div>
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">
+                        The team handled our wedding beautifully. Decoration, coordination, and guest management were absolutely perfect.
+                        </p>
+                    </div>
+
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul">
+                            <div class="avatar-fallback">R</div>
+                        </div>
+                        <div class="review-info">
+                            <h4>Rahul</h4>
+                            <span>Birthday Celebration</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">
+                    Amazing service and very professional staff. Our birthday event looked stunning and everything was managed on time.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-top">
+                        <div class="avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sneha">
+                            <div class="avatar-fallback">S</div>
+                        </div>
+                        <div class="review-info">
+                            <h4>Sneha</h4>
+                            <span>Corporate Event</span>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★☆</div>
+                            <p class="review-text">
+                                Very organized and creative team. They made our corporate event successful and stress-free.
+                            </p>
+                </div>
+            </div>
+    </section>
+    <!-- company details -->
+    <section id="company details" class="company-section">
+        <div class="container">
+            <div class="company-image">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Company Image">
+            </div>
+            <div class="company-details">
+                <h2>Company Details</h2>
+                <p><span class="label">Name:</span> Thopstech Event Management</p>
+                <p><span class="label">Address:</span> Bangalore, India</p>
+                <p><span class="label">Email:</span> thopstechevent@gmail.com</p>
+                <p><span class="label">Phone:</span> +91 9876543210</p>
+                <p><span class="label">Description:</span> We specialize in event planning, decoration, and catering services to make your moments unforgettable.</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- contact us -->
+    <section id="contact us" class="contact">
+        <h2>Contact Us</h2>
+
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>@ 2026 Thopstech Event Management</p>
+    </footer>  
+</body>
+</html>
